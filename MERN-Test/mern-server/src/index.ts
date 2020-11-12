@@ -2,8 +2,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import {ExercisesRouter} from "./routes/exercises";
-import {UsersRouter} from "./routes/users";
+import { ExercisesRouter } from "./routes/exercises";
+import { UsersRouter } from "./routes/users";
 
 dotenv.config();
 
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-  // tslint:disable-next-line:no-console
+// tslint:disable-next-line:no-console
 console.log(uri);
 mongoose.connect(uri, {
   useCreateIndex: true,
