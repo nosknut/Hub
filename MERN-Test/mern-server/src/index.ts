@@ -2,6 +2,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import {ExercisesRouter} from "./routes/exercises";
+import {UsersRouter} from "./routes/users";
 
 dotenv.config();
 
@@ -25,6 +27,9 @@ connection.once("open", () => {
   // tslint:disable-next-line:no-console
   console.log("MongoDB database connection established successfully");
 });
+
+app.use("/exercises", ExercisesRouter);
+app.use("/users", UsersRouter);
 
 app.listen(port, () => {
   // tslint:disable-next-line:no-console
