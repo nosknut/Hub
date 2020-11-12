@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Exercise } from '../models/Exercise';
 import { Model } from '../models/Model';
 import { User } from '../models/User';
+import { API_URI } from "../uri";
 
 function Row({ deleteUser, user: {
     _id, username
@@ -30,14 +31,14 @@ export function UsersList() {
     const [users, setUsers] = useState<Model<User>[]>([]);
 
     useEffect(() => {
-        axios.get('http://lantea.eu/api/users/')
+        axios.get(API_URI + '/api/users/')
             .then(response => {
                 setUsers(response.data);
             })
     }, [setUsers]);
 
     function deleteUser(id: string) {
-        axios.delete('http://lantea.eu/api/users/' + id)
+        axios.delete(API_URI + '/api/users/' + id)
             .then(() => {
                 setUsers(users.filter(el => el._id !== id))
             });

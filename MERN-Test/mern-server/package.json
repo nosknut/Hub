@@ -6,6 +6,9 @@
   "scripts": {
     "fix": "tslint -c tslint.json -p tsconfig.json --fix",
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "install-client": "cd ../mern-client && npm install",
+    "build-client": "cd ../mern-client && npm run build",
+    "heroku-postbuild": "npm run install-client && npm run build-client",
     "build": "tsc",
     "prestart": "npm run build",
     "start": "ts-node-dev ."

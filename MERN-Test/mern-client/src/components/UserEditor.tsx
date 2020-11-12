@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { User } from "../models/User";
 import { useHistory } from "react-router-dom";
+import { API_URI } from "../uri";
 
 function submit(user: User) {
-    return axios.post('http://lantea.eu/api/users', user);
+    return axios.post(API_URI + '/api/users', user);
 }
 
 export function UserEditor() {

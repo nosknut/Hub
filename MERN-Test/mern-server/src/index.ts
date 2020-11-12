@@ -8,14 +8,12 @@ import { UsersRouter } from "./routes/users";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
-// tslint:disable-next-line:no-console
-console.log(uri);
+const uri = process.env.MONGODB_URI;
 mongoose.connect(uri, {
   useCreateIndex: true,
   useNewUrlParser: true,
@@ -30,6 +28,8 @@ connection.once("open", () => {
 
 app.use("/api/exercises", ExercisesRouter);
 app.use("/api/users", UsersRouter);
+
+app.use(express.static("../../mern-client/build"));
 
 app.listen(port, () => {
   // tslint:disable-next-line:no-console
