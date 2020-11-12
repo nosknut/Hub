@@ -1,11 +1,13 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-export interface IExercise extends Document {
+export interface Exercise {
   username: string;
   description: string;
   duration: number;
   date: Date;
 }
+
+export interface IExercise extends Document, Exercise { }
 
 export const ExerciseSchema = mongoose.model<IExercise>("Exercise", new Schema({
   username: { type: String, required: true },
