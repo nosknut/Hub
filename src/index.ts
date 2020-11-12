@@ -29,7 +29,7 @@ connection.once("open", () => {
 app.use("/api/exercises", ExercisesRouter);
 app.use("/api/users", UsersRouter);
 
-app.use(express.static("../../mern-client/build"));
+app.use(express.static("client/build"));
 
 app.listen(port, () => {
   // tslint:disable-next-line:no-console
