@@ -5,13 +5,14 @@ import DatePicker from "react-date-picker";
 import { Model } from '../models/Model';
 import { Exercise } from "../models/Exercise";
 import { useHistory } from "react-router-dom";
+import { API_URI } from "../uri";
 
 function create(exercise: Exercise) {
-    return axios.post('http://lantea.eu/api/exercises', exercise);
+    return axios.post(API_URI + '/api/exercises', exercise);
 }
 
 function update(exercise: Exercise, id: string) {
-    return axios.put('http://lantea.eu/api/exercises/' + id, exercise);
+    return axios.put(API_URI + '/api/exercises/' + id, exercise);
 }
 
 export function ExerciseEditor({ id }: { id?: string }) {
@@ -25,7 +26,7 @@ export function ExerciseEditor({ id }: { id?: string }) {
     const [users, setUsers] = useState<string[]>([])
 
     useEffect(() => {
-        axios.get('http://lantea.eu/api/users/')
+        axios.get(API_URI + '/api/users/')
             .then(({ data }: { data: Model<User>[] }) => {
                 if (data.length > 0) {
                     setUsername(data[0].username);
@@ -35,7 +36,7 @@ export function ExerciseEditor({ id }: { id?: string }) {
                 console.log(error);
             })
         if (id) {
-            axios.get('http://lantea.eu/api/exercises/' + id)
+            axios.get(API_URI + '/api/exercises/' + id)
                 .then(({ data }: { data: Model<Exercise> }) => {
                     setUsername(data.username);
                     setDescription(data.description);
