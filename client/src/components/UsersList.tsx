@@ -1,7 +1,5 @@
-import React, { Component, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Exercise } from '../models/Exercise';
 import { Model } from '../models/Model';
 import { User } from '../models/User';
 import { API_URI } from "../uri";
