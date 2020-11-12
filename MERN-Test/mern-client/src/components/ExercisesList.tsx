@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Exercise } from '../models/Exercise';
 import { Model } from '../models/Model';
+import { API_URI } from "../uri";
+
 
 function Row({ deleteExercise, exercise: {
     _id, username, description, duration, date,
@@ -32,14 +34,14 @@ export function ExerciseList() {
     const [exercises, setExercises] = useState<Model<Exercise>[]>([]);
 
     useEffect(() => {
-        axios.get('http://lantea.eu/api/exercises/')
+        axios.get(API_URI + '/api/exercises/')
             .then(response => {
                 setExercises(response.data);
             })
     }, [setExercises]);
 
     function deleteExercise(id: string) {
-        axios.delete('http://lantea.eu/api/exercises/' + id)
+        axios.delete(API_URI + '/api/exercises/' + id)
             .then(() => {
                 setExercises(exercises.filter(el => el._id !== id))
             });
