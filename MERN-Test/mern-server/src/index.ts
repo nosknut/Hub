@@ -28,8 +28,8 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-app.use("/exercises", ExercisesRouter);
-app.use("/users", UsersRouter);
+app.use("/api/exercises", ExercisesRouter);
+app.use("/api/users", UsersRouter);
 
 app.listen(port, () => {
   // tslint:disable-next-line:no-console
