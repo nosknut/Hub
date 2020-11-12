@@ -9,7 +9,7 @@ import { UsersList } from './components/UsersList';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/client">
       <div className="container">
         <Navbar />
         <br />
