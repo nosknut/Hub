@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    container_name: web
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      PORT: "80"
+      MONGODB_URI: "mongodb://root:root@db:27017/?authSource=admin"
+    depends_on: 
+      - "db"
+  db:
+    container_name: db
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
