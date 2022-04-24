@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { User } from "../models/User";
+import React, { useEffect, useState } from 'react';
 import DatePicker from "react-date-picker";
-import { Model } from '../models/Model';
-import { Exercise } from "../models/Exercise";
 import { useHistory } from "react-router-dom";
+
+import { Exercise } from "../models/Exercise";
+import { Model } from '../models/Model';
+import { User } from "../models/User";
 import { API_URI } from "../uri";
 
 function create(exercise: Exercise) {
@@ -103,7 +104,7 @@ export function ExerciseEditor({ id }: { id?: string }) {
                     <div>
                         <DatePicker
                             value={date}
-                            onChange={(val) => setDate(Array.isArray(val) ? val[0] : val)}
+                            onChange={(val: any) => setDate(Array.isArray(val) ? val[0] : val)}
                         />
                     </div>
                 </div>
